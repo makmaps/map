@@ -1,2 +1,3 @@
 # map
-personal portfolio space forr sharing web mapping products
+
+personal portfolio space for sharing web mapping products

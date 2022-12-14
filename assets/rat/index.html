@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Boston Rat Map - Starter</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Here are the links to the CSS which will add some style to the map -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+      integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+      crossorigin=""
+    />
+
+    <link
+      rel="stylesheet"
+      href="./Leaflet.markercluster-1.0.5/MarkerCluster.Default.css"
+    />
+
+    <!-- Here are the links to the js libraries that make things interact -->
+    <script
+      src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+      integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+      crossorigin=""
+    ></script>
+
+    <script src="jquery-2.1.1.min.js"></script>
+
+    <script src="./Leaflet.markercluster-1.0.5/leaflet.markercluster.js"></script>
+
+    <!-- needed to style your webpage and map -->
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+      }
+      #map {
+        height: 100%;
+      }
+    </style>
+  </head>
+
+  <!-- below you will see all that gets placed into your Leaflet Map -->
+  <body>
+    <!-- this is where all the map pieces will get placed -->
+    <div id="map"></div>
+
+    <!-- this is the javascript that is using the leaflet libary and will make our Boston Rat Map -->
+    <script>
+      // initialize the map
+      var map = L.map("map").setView([42.35, -71.08], 13);
+
+      L.tileLayer(
+        "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}",
+        {
+          attribution:
+            'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+          maxZoom: 18,
+          id: "mapbox/streets-v11",
+          tileSize: 512,
+          zoomOffset: -1,
+          accessToken:
+            "pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw",
+        }
+      ).addTo(map);
+
+      // load GeoJSON polygon from external file
+      $.getJSON("neighborhoods.geojson", function (hoodData) {
+        L.geoJson(hoodData, {
+          style: function (feature) {
+            var fillColor,
+              density = feature.properties.density;
+            if (density > 80) fillColor = "#006837";
+            else if (density > 40) fillColor = "#31a354";
+            else if (density > 20) fillColor = "#78c679";
+            else if (density > 10) fillColor = "#c2e699";
+            else if (density > 0) fillColor = "#ffffcc";
+            else fillColor = "#f7f7f7"; // no data
+            return {
+              color: "#999",
+              weight: 1,
+              fillColor: fillColor,
+              fillOpacity: 0.6,
+            };
+          },
+          onEachFeature: function (feature, layer) {
+            layer.bindPopup(
+              "<strong>" +
+                feature.properties.Name +
+                "</strong><br/>" +
+                feature.properties.density +
+                " rats per square mile"
+            );
+          },
+        }).addTo(map);
+      });
+
+      // load GeoJSON from an external file
+      $.getJSON("rodents.geojson", function (data) {
+        var ratIcon = L.icon({
+          iconUrl: "rat.png",
+          iconSize: [60, 50],
+        });
+        var clusters = L.markerClusterGroup();
+        var rodents = L.geoJson(data, {
+          pointToLayer: function (feature, latlng) {
+            var marker = L.marker(latlng, { icon: ratIcon });
+            marker.bindPopup(
+              feature.properties.Location + "" + feature.properties.OPEN_DT
+            );
+            return marker;
+          },
+        });
+        clusters.addLayer(rodents);
+        map.addLayer(clusters);
+      });
+    </script>
+  </body>
+</html>
