@@ -66,8 +66,8 @@
       ).addTo(map);
 
       // load GeoJSON polygon from external file
-      $.getJSON("highlands.geojson", function (highlands) {
-        L.geoJson(highlands).addTo(map);
+      $.getJSON("deer.geojson", function (deer) {
+        L.geoJson(deer).addTo(map);
       });
 
       // var esri = L.esri.featureLayer({
