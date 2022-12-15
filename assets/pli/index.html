@@ -25,7 +25,7 @@
       crossorigin=""
     ></script>
 
-    <script src="https://makmaps.github.io/map/assets/map_elements/jquery-2.1.1.min.js"></script>
+    <script src="jquery-2.1.1.min.js"></script>
 
     <script src="https://makmaps.github.io/map/assets/map_elements/Leaflet.markercluster-1.0.5/leaflet.markercluster.js"></script>
 
@@ -66,12 +66,9 @@
       ).addTo(map);
 
       // load GeoJSON polygon from external file
-      $.getJSON(
-        "../../../map/assets/pli/assets/data/nps_os.geojson",
-        function (npsData) {
-          L.geoJson(npsData).addTo(map);
-        }
-      );
+      $.getJSON("highlands.geojson", function (highlandsData) {
+        L.geoJson(highlandsData).addTo(map);
+      });
 
       // var esri = L.esri.featureLayer({
       //     url: "https://services8.arcgis.com/CBiB2HwHGXUi8D4Y/arcgis/rest/services/njdep_os/FeatureServer/0",
