@@ -66,7 +66,7 @@
       ).addTo(map);
 
       // load GeoJSON polygon from external file
-      $.getJSON("highlands.geojson", function (highlandsData) {
+      $.getJSON("highlands_os.geojson", function (highlandsData) {
         L.geoJson(highlandsData).addTo(map);
       });
 
