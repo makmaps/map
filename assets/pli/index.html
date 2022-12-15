@@ -66,12 +66,9 @@
       ).addTo(map);
 
       // load GeoJSON polygon from external file
-      $.getJSON(
-        "./map/assets/pli/assets/data/nps_os.geojson",
-        function (npsData) {
-          L.geoJson(npsData).addTo(map);
-        }
-      );
+      $.getJSON("./data/nps_os.geojson", function (npsData) {
+        L.geoJson(npsData).addTo(map);
+      });
 
       // var esri = L.esri.featureLayer({
       //     url: "https://services8.arcgis.com/CBiB2HwHGXUi8D4Y/arcgis/rest/services/njdep_os/FeatureServer/0",
