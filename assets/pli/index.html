@@ -65,6 +65,15 @@
             "pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw",
         }
       ).addTo(map);
+
+      var esri = L.esri
+        .featureLayer({
+          url: "https://services8.arcgis.com/CBiB2HwHGXUi8D4Y/arcgis/rest/services/njdep_os/FeatureServer/0",
+          style: function () {
+            return { color: "#70ca49", weight: 2 };
+          },
+        })
+        .addTo(map);
     </script>
   </body>
 </html>
