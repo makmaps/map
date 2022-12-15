@@ -70,6 +70,10 @@
         L.geoJson(pinelands).addTo(map);
       });
 
+      $.getJSON("neighborhoods.geojson", function (hoodData) {
+        L.geoJson(hoodData).addTo(map);
+      });
+
       // var esri = L.esri.featureLayer({
       //     url: "https://services8.arcgis.com/CBiB2HwHGXUi8D4Y/arcgis/rest/services/njdep_os/FeatureServer/0",
       //     style: function () {
