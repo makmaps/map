@@ -1,8 +1,6 @@
-# Preserved Lands Index of New Jersey (pli)
+# Building A Comprehensive Preserved Lands Index Layer for New Jersey State
 
-Building A Comprehensive Preserved Lands Index Layer for New Jersey State
-
-# Introduction
+## Introduction
 
 There are many different groups working in New Jersey to preserve lands for recreational use, ecological integrity and climate resilience planning. Due to my unique position working alongside many involved in the conservation community, I am aware of a need for a parcel-based, statewide preserved lands index. The goal of this index layer is to bring together a large number of disparate datasets from agencies that preserve lands throughout the state. This will allow each agency to work in conjunction with each other, helping to provide information about preservation status, which will help the preservation process for connecting habitat.
 
@@ -14,7 +12,7 @@ After collecting all relevant datasets, I plan to create a comprehensive SQL fun
 
 Issues that I anticipate encountering include collecting relevant datasets, data that does not include proper spatial reference or resolution, and SQL querying methodology that will need to be tweaked and improved along the research process.
 
-# Datasets:
+## Datasets:
 
 Highlands Council - open space
 New Jersey Conservation Foundation - open space
