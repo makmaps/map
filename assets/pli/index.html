@@ -67,7 +67,7 @@
 
       // load GeoJSON polygon from external file
       $.getJSON(
-        "/Users/francom1/_mak/makmaps/portfolio/map/assets/pli/assets/data/nps_os.geojson",
+        "./map/assets/pli/assets/data/nps_os.geojson",
         function (npsData) {
           L.geoJson(npsData).addTo(map);
         }
