@@ -15,11 +15,19 @@ Issues that I anticipate encountering include collecting relevant datasets, data
 ## Datasets:
 
 Highlands Council - open space
+
 New Jersey Conservation Foundation - open space
+
 New Jersey Department of Environmental Protection - open space
+
 NRCS Easements
+
 Pinelands Commission - open space
+
 The Nature Conservancy - open space
+
 US Fish and Wildlife - open space
+
 National Park Service - open space
+
 New Jersey State Agricultural Development Committee - preserved farmland
