@@ -106,7 +106,7 @@
           }
         },
         onEachFeature: function( feature, layer ){
-          layer.bindPopup( "<strong>Owner " + feature.properties.NMEOWNER + "</strong><br/>Program: " + feature.properties.PROGRAM)
+          layer.bindPopup( "<strong>Owner " + feature.properties.NME_COMMON + "</strong><br/>Program: " + feature.properties.PROGRAM)
         }
       }).addTo(map);
 
