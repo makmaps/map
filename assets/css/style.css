@@ -86,6 +86,10 @@ a {
   gap: 2em;
 }
 
+.content div ul li {
+  border-bottom: 1px #000000 solid;
+}
+
 /* ArcGIS Online iframe */
 
 .embed-container {
