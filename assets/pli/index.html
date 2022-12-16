@@ -76,22 +76,22 @@
       ).addTo(map);
 
       // load GeoJSON polygon from external file
-      // $.getJSON("deer.geojson", function (deer) {
-      //   L.geoJson(deer).addTo(map);
-      // });
+      $.getJSON("highlands.json", function (highlands) {
+        L.geoJson(highlands).addTo(map);
+      });
 
-        //ESRI ArcGIS layers from NJ DEP GIS Program; polygon feature layer example
-        //Using a relative url to call layer instead of http
-        var dep = L.esri.featureLayer({
-          url: 'https://mapsdep.nj.gov/arcgis/rest/services/Features/Land/MapServer/65',
-          style: function(feature){
-            return {
-              color: '#074C05',
-              weight: 1
-            }
+      //ESRI ArcGIS layers from NJ DEP GIS Program; polygon feature layer example
+      //Using a relative url to call layer instead of http
+      var dep = L.esri.featureLayer({
+        url: 'https://mapsdep.nj.gov/arcgis/rest/services/Features/Land/MapServer/65',
+        style: function(feature){
+          return {
+            color: '#074C05',
+            weight: 1
           }
+        }
 
-        }).addTo(map);
+      }).addTo(map);
 
     </script>
   </body>
