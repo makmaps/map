@@ -81,9 +81,10 @@
 });
 
       // load GeoJSON polygon from external file
-      $.getJSON("highlands.json", function (highlands) {
-        L.geoJson(highlands).addTo(map);
-      });
+      // Not working with local geojson file
+      // $.getJSON("highlands.json", function (highlands) {
+      //   L.geoJson(highlands).addTo(map);
+      // });
 
       //ESRI ArcGIS layers from NJ DEP GIS Program; polygon feature layer example
       var dep = L.esri.featureLayer({
