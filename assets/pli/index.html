@@ -91,9 +91,24 @@
           }
         },
         onEachFeature: function( feature, layer ){
-          layer.bindPopup( "<strong>Owner " + feature.properties.owner + "</strong><br/>" + feature.properties.gisacres + " acres")
+          layer.bindPopup( "<strong>Owner: " + feature.properties.OWNER + "</strong><br/>" + feature.properties.GISACRES + " acres")
         }
-  }).addTo(map);
+      }).addTo(map);
+
+      //ESRI ArcGIS layers from NJ DEP GIS Program; polygon feature layer example
+      //Using a relative url to call layer instead of http
+      var dep = L.esri.featureLayer({
+        url: 'https://services.arcgis.com/gzSkSfQGxyX6dicF/arcgis/rest/services/NJFPP_Preserved_Farms/FeatureServer/0', 
+        style: function(feature){
+          return {
+            color: '#e69b00',
+            weight: 1
+          }
+        },
+        onEachFeature: function( feature, layer ){
+          layer.bindPopup( "<strong>Owner " + feature.properties.NMEOWNER + "</strong><br/>Program: " + feature.properties.PROGRAM)
+        }
+      }).addTo(map);
 
 
     </script>
