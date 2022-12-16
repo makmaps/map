@@ -1,5 +1,5 @@
 # Building A Comprehensive Preserved Lands Index Layer for New Jersey State
-
+<a href="https://makmaps.github.io/map/assets/pli/">View live example here</a>
 ## Introduction
 
 There are many different groups working in New Jersey to preserve lands for recreational use, ecological integrity and climate resilience planning. Due to my unique position working alongside many involved in the conservation community, I am aware of a need for a parcel-based, statewide preserved lands index. The goal of this index layer is to bring together a large number of disparate datasets from agencies that preserve lands throughout the state. This will allow each agency to work in conjunction with each other, helping to provide information about preservation status, which will help the preservation process for connecting habitat.
