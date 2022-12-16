@@ -79,16 +79,8 @@
                     fillOpacity: 0.5
                 }
             }
-        });
-
-        var AgBaseline = L.esri.featureLayer({
-            url: '//geodata.hawaii.gov/arcgis/rest/services/LandUseLandCover/MapServer/4',
-            style: function(feature) {
-                return {
-                    fillOpacity: 0.5
-                }
-            }
-        });
+        }).addTo(map);
+        
     </script>
   </body>
 </html>
