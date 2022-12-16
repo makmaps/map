@@ -83,15 +83,18 @@
       //ESRI ArcGIS layers from NJ DEP GIS Program; polygon feature layer example
       //Using a relative url to call layer instead of http
       var dep = L.esri.featureLayer({
-        url: 'https://mapsdep.nj.gov/arcgis/rest/services/Features/Land/MapServer/65',
+        url: 'https://mapsdep.nj.gov/arcgis/rest/services/Features/Land/MapServer/65', 
         style: function(feature){
           return {
             color: '#074C05',
             weight: 1
           }
+        },
+        onEachFeature: function( feature, layer ){
+          layer.bindPopup( "<strong>Owner " + feature.properties.owner + "</strong><br/>" + feature.properties.gisacres + " acres")
         }
+  }).addTo(map);
 
-      }).addTo(map);
 
     </script>
   </body>
