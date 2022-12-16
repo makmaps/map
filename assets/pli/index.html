@@ -75,6 +75,11 @@
         }
       ).addTo(map);
 
+      var USGS_USImagery = L.tileLayer('https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer/tile/{z}/{y}/{x}', {
+	maxZoom: 20,
+	attribution: 'Tiles courtesy of the <a href="https://usgs.gov/">U.S. Geological Survey</a>'
+});
+
       // load GeoJSON polygon from external file
       $.getJSON("highlands.json", function (highlands) {
         L.geoJson(highlands).addTo(map);
@@ -114,6 +119,9 @@
         L.geoJson(usfws).addTo(map);
       });
 
+      var parcels = L.tileLayer('https://tpk-tiles.s3.amazonaws.com/political/parcels-22/{z}/{x}/{y}.png', {
+          maxZoom: 19
+      }).addTo(map);
     </script>
   </body>
 </html>
