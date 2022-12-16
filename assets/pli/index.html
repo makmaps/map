@@ -110,18 +110,24 @@
           }
         },
         onEachFeature: function( feature, layer ){
-          layer.bindPopup( "<strong>Owner " + feature.properties.NME_COMMON + "</strong><br/>Program: " + feature.properties.PROGRAM)
+          layer.bindPopup( "<strong>Owner: " + feature.properties.NME_COMMON + "</strong><br/>Program: " + feature.properties.PROGRAM)
         }
       }).addTo(map);
 
-      // load GeoJSON polygon from external file
-      $.getJSON("usfws.geojson", function (usfws) {
-        L.geoJson(usfws).addTo(map);
-      });
-
-      var parcels = L.tileLayer('https://tpk-tiles.s3.amazonaws.com/political/parcels-22/{z}/{x}/{y}.png', {
-          maxZoom: 19
+      //ESRI ArcGIS Layers from NJ Highlands Council
+      var highlands = L.esri.featureLayer({
+        url: 'https://services6.arcgis.com/ZrVlS0wslq8Nvq5I/arcgis/rest/services/Preserved_Lands/FeatureServer/1',
+        style: function(feature){
+          return{
+            fillColor: '#BCF814',
+            weight: 0
+          }
+        },
+        onEachFeature: function(feature, layer){
+          layer.bindPopup("<strong>Highlands: " + feature.properties.OS_CLASS)
+        }
       }).addTo(map);
+
     </script>
   </body>
 </html>
