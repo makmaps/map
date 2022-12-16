@@ -103,3 +103,21 @@ a {
   width: 100%;
   height: 100%;
 }
+
+
+/* Responsive screen */
+
+@media screen and (max-width: 600px) {
+  #main{
+    width: 90%;
+  }
+
+  .header{
+    flex-wrap: nowrap;
+    padding: 0.3em;
+  }
+
+  .content {
+    padding: 0.2em;
+    }
+}
