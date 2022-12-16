@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>New Jersey Preserved Lands Map</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Here are the links to the CSS which will add some style to the map -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+      integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+      crossorigin=""
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://makmaps.github.io/map/assets/map_elements/Leaflet.markercluster-1.0.5/MarkerCluster.Default.css"
+    />
+
+    <!-- Here are the links to the js libraries that make things interact -->
+    <script
+      src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+      integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+      crossorigin=""
+    ></script>
+
+    <script src="jquery-2.1.1.min.js"></script>
+
+    <script src="https://makmaps.github.io/map/assets/map_elements/Leaflet.markercluster-1.0.5/leaflet.markercluster.js"></script>
+
+    <!-- Esri Leaflet Plugin: https://esri.github.io/esri-leaflet/ -->
+    <script src="https://unpkg.com/esri-leaflet@2.1.3/dist/esri-leaflet.js" integrity="sha512-pijLQd2FbV/7+Jwa86Mk3ACxnasfIMzJRrIlVQsuPKPCfUBCDMDUoLiBQRg7dAQY6D1rkmCcR8286hVTn/wlIg==" crossorigin=""></script>
+
+     <!-- ESRI Renderer Plugin: https://github.com/Esri/esri-leaflet-renderers -->
+    <!-- Renders feature layer using default symbology as defined by ArcGIS REST service -->
+    <!-- Currently doesn't work with ESRI cluster plugin -->
+    <script src="https://unpkg.com/esri-leaflet-renderers@2.0.6/dist/esri-leaflet-renderers.js" integrity="sha512-mhpdD3igvv7A/84hueuHzV0NIKFHmp2IvWnY5tIdtAHkHF36yySdstEVI11JZCmSY4TCvOkgEoW+zcV/rUfo0A==" crossorigin=""></script>
+
+
+
+    <!-- needed to style your webpage and map -->
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+      }
+      #map {
+        height: 100%;
+      }
+    </style>
+  </head>
+
+  <!-- below you will see all that gets placed into your Leaflet Map -->
+  <body>
+    <!-- this is where all the map pieces will get placed -->
+    <div id="map"></div>
+
+    <script>
+      // initialize the map
+      var map = L.map("map").setView([40.21, -74.58], 8);
+
+      L.tileLayer(
+        "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}",
+        {
+          attribution:
+            'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+          maxZoom: 18,
+          id: "mapbox/streets-v11",
+          tileSize: 512,
+          zoomOffset: -1,
+          accessToken:
+            "pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw",
+        }
+      ).addTo(map);
+
+      var USGS_USImagery = L.tileLayer('https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer/tile/{z}/{y}/{x}', {
+	maxZoom: 20,
+	attribution: 'Tiles courtesy of the <a href="https://usgs.gov/">U.S. Geological Survey</a>'
+});
+
+      //ESRI ArcGIS layer
+      var pli = L.esri.featureLayer({
+        url: 'https://services8.arcgis.com/CBiB2HwHGXUi8D4Y/arcgis/rest/services/pli_v3/FeatureServer', 
+        style: function(feature){
+          return {
+            fillColor: '#074C05',
+            weight: 0
+          }
+        },
+        onEachFeature: function( feature, layer ){
+          layer.bindPopup( "<strong>Pams Pin: </strong>" + feature.properties.pams_pin + "<br/><strong>Preservation Type: </strong>" + feature.properties.pres_type + "<br><strong>Active Preservation Agencies: </strong>" + feature.properties.pl_source)
+        }
+      }).addTo(map);
+
+    </script>
+  </body>
+</html>
