@@ -81,7 +81,6 @@
       });
 
       //ESRI ArcGIS layers from NJ DEP GIS Program; polygon feature layer example
-      //Using a relative url to call layer instead of http
       var dep = L.esri.featureLayer({
         url: 'https://mapsdep.nj.gov/arcgis/rest/services/Features/Land/MapServer/65', 
         style: function(feature){
@@ -95,8 +94,7 @@
         }
       }).addTo(map);
 
-      //ESRI ArcGIS layers from NJ DEP GIS Program; polygon feature layer example
-      //Using a relative url to call layer instead of http
+      //ESRI ArcGIS layers from NJ DOA SADC; polygon feature layer example
       var sadc = L.esri.featureLayer({
         url: 'https://services.arcgis.com/gzSkSfQGxyX6dicF/arcgis/rest/services/NJFPP_Preserved_Farms/FeatureServer/0', 
         style: function(feature){
@@ -111,6 +109,10 @@
         }
       }).addTo(map);
 
+      // load GeoJSON polygon from external file
+      $.getJSON("usfws.geojson", function (usfws) {
+        L.geoJson(usfws).addTo(map);
+      });
 
     </script>
   </body>
