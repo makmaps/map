@@ -59,9 +59,18 @@
 
     <script>
       // initialize the map
-      var map = L.map("map").setView([40.21, -74.58], 8);
+      var map = L.map('map', {
+          center: [40.21, -74.58],
+          zoom: 8,
+          layers: [osm, mapbox]
+      });
 
-      L.tileLayer(
+      var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          maxZoom: 19,
+          attribution: '© OpenStreetMap'
+      });
+
+      var mapbox = L.tileLayer(
         "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}",
         {
           attribution:
@@ -72,13 +81,18 @@
           zoomOffset: -1,
           accessToken:
             "pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw",
-        }
-      ).addTo(map);
+        });
 
-      var USGS_USImagery = L.tileLayer('https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer/tile/{z}/{y}/{x}', {
-	maxZoom: 20,
-	attribution: 'Tiles courtesy of the <a href="https://usgs.gov/">U.S. Geological Survey</a>'
-});
+      var usgs = L.tileLayer('https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer/tile/{z}/{y}/{x}', {
+          maxZoom: 20,
+          attribution: 'Tiles courtesy of the <a href="https://usgs.gov/">U.S. Geological Survey</a>'
+      });
+
+      var baseMaps = {
+          "OpenStreetMap": osm,
+          "Mapbox Streets": mapbox,
+          "USGS US Imagery": usgs
+      };
 
       //ESRI ArcGIS layer
       var pli = L.esri.featureLayer({
@@ -92,18 +106,12 @@
         onEachFeature: function( feature, layer ){
           layer.bindPopup( "<strong>Pams Pin: </strong>" + feature.properties.pams_pin + "<strong>Preservation Type: </strong>" + feature.properties.pres_type + "<br><strong>Active Preservation Agencies: </strong>" + feature.properties.pl_source)
         }
-      }).addTo(map);
+      });
 
-      var popup = L.popup();
+      
+      var layerControl = L.control.layers(baseMaps, pli).addTo(map);
 
-      function onMapClick(e) {
-          popup
-              .setLatLng(e.latlng)
-              .setContent("You clicked the map at " + e.latlng.toString())
-              .openOn(map);
-      }
 
-      map.on('click', onMapClick);
     </script>
   </body>
 </html>
