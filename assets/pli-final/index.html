@@ -90,10 +90,15 @@
           }
         },
         onEachFeature: function( feature, layer ){
-          layer.bindPopup( "<strong>Pams Pin: </strong>" + feature.properties.pams_pin + "<br/><strong>Preservation Type: </strong>" + feature.properties.pres_type + "<br><strong>Active Preservation Agencies: </strong>" + feature.properties.pl_source)
+          layer.bindPopup( "<strong>Pams Pin: </strong>" + feature.properties.pams_pin + "<strong>Preservation Type: </strong>" + feature.properties.pres_type + "<br><strong>Active Preservation Agencies: </strong>" + feature.properties.pl_source)
         }
       }).addTo(map);
 
+      function onMapClick(e) {
+        alert("You clicked the map at " + e.latlng);
+      }
+
+      map.on('click', onMapClick);
     </script>
   </body>
 </html>
