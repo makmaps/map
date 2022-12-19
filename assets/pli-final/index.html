@@ -5,25 +5,16 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Here are the links to the CSS which will add some style to the map -->
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
-      integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
-      crossorigin=""
-    />
+    <!-- Leaflet Default CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin=""/>
 
     <link
       rel="stylesheet"
       href="https://makmaps.github.io/map/assets/map_elements/Leaflet.markercluster-1.0.5/MarkerCluster.Default.css"
     />
 
-    <!-- Here are the links to the js libraries that make things interact -->
-    <script
-      src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
-      integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
-      crossorigin=""
-    ></script>
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
 
     <script src="jquery-2.1.1.min.js"></script>
 
@@ -37,8 +28,7 @@
     <!-- Currently doesn't work with ESRI cluster plugin -->
     <script src="https://unpkg.com/esri-leaflet-renderers@2.0.6/dist/esri-leaflet-renderers.js" integrity="sha512-mhpdD3igvv7A/84hueuHzV0NIKFHmp2IvWnY5tIdtAHkHF36yySdstEVI11JZCmSY4TCvOkgEoW+zcV/rUfo0A==" crossorigin=""></script>
 
-
-
+    
     <!-- needed to style your webpage and map -->
     <style>
       html,
@@ -110,7 +100,6 @@
 
       
       var layerControl = L.control.layers(baseMaps, pli).addTo(map);
-
 
     </script>
   </body>
