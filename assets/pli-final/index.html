@@ -95,8 +95,6 @@
           'USGS Satellite ': usgs
         };
 
-      const layerControl = L.control.layers(baseLayers, overlays).addTo(map);
-
        //ESRI ArcGIS layer
        var pli = L.esri.featureLayer({
         url: 'https://services8.arcgis.com/CBiB2HwHGXUi8D4Y/arcgis/rest/services/pli_v3/FeatureServer/0', 
@@ -109,8 +107,9 @@
         onEachFeature: function( feature, layer ){
           layer.bindPopup( "<strong>Pams Pin: </strong>" + feature.properties.pams_pin + "<strong>Preservation Type: </strong>" + feature.properties.pres_type + "<br><strong>Active Preservation Agencies: </strong>" + feature.properties.pl_source)
         }
-      }).addTo(map);
+      });
 
+      const layerControl = L.control.layers(baseLayers, pli).addTo(map);
 
     </script>
   </body>
