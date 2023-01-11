@@ -65,12 +65,46 @@ crossorigin=""></script>
             .setContent('<p>Hello world!<br />This is a nice popup.</p>')
             .openOn(map);
 
-            map.on('click', function() { 
-                alert('Coordinates are: ' + 
-                map.getCenter().lat + 
-                ', ' + 
-                map.getCenter().lng); 
+        var data = {
+            "type": "Feature",
+            "features": [
+                {
+                "type": "Feature",
+                "properties": {
+                    "title": "DoubleTree Hotel",
+                    "address": "1000 NE Multnomah Street, Portland, Oregon, 97232",
+                    "phone": "+1-503-281-6111",
+                    "marker-symbol": "lodging",
+                    "color": "#23344c",
+                    "radius": 300
+                },
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [
+                    -122.65522956848145,
+                    45.53050807819899
+                    ]
+                }
+                }
+            ]
+        };
+
+        var geoJson = L.geoJson(data, {
+            pointToLayer: function(feature, latlng) {
+                return L.circleMarker(latlng, {
+                    radius: feature.properties.radius,
+                    fillColor: '#bada55',
+                    fillOpacity: .8
+                })
+            },
+            onEachFeature: onEachFeature	
+        });
+
+        function onEachFeature(feature, layer) {
+            layer.on({
+                click: zoomToFeature
             });
+        }
 
     </script>
 
