@@ -65,6 +65,14 @@ crossorigin=""></script>
             .setContent('<p>Hello world!<br />This is a nice popup.</p>')
             .openOn(map);
 
+        var latlngs = [[45.52, -122.67], 
+            [45.53, -122.68]];
+
+            var myPolyline = L.polyline(latlngs, {
+                    color: 'red'
+                })
+                .addTo(map);
+
         var myLayers = L.layerGroup([myMarker])
             .addLayer(myPolyline)
             .addTo(map);
