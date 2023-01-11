@@ -57,9 +57,12 @@ crossorigin=""></script>
         // attach some popup content to it and 
         // open the popup
         var myMarker = L.marker([45.52245801087795, -122.67773866653444]).addTo(map);
+     
+     myMarker
+	.bindPopup("Hi. I'm a popup. <br> Customize me.")
+    .openPopup();
 
 
-        
     </script>
 
 </body>
