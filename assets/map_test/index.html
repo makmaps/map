@@ -65,6 +65,7 @@ crossorigin=""></script>
             .setContent('<p>Hello world!<br />This is a nice popup.</p>')
             .openOn(map);
 
+        map.on('click', function() { alert('Clicked on the map!'); });
 
     </script>
 
