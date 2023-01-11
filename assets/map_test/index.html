@@ -32,14 +32,23 @@ crossorigin=""></script>
     <div id="map"></div>
 
     <script>
-        // create a map in the "map" div
-        var map = L.map("map");
+        // initialize the map on the "map" div with a given center and zoom
+        var map = L.map('map', {
+            center: [45.522, -122.677],
+            zoom: 13
+        });
     
         L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}.png", {
             attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a>contributors'
         }).addTo(map);
     
-        map.setView([45.522, -122.6777], 13);
+        L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
+			attribution: 'Map data &copy;  ' +
+			'<a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+			'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+			'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+			id: 'examples.map-i86knfo3'
+		}).addTo(map);
     
     </script>
 
