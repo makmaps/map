@@ -38,10 +38,7 @@ crossorigin=""></script>
             zoom: 13
         });
     
-        L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}.png", {
-            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a>contributors'
-        }).addTo(map);
-    
+        // add mapbox default
         L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
 			attribution: 'Map data &copy;  ' +
 			'<a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
@@ -49,7 +46,12 @@ crossorigin=""></script>
 			'Imagery © <a href="http://mapbox.com">Mapbox</a>',
 			id: 'examples.map-i86knfo3'
 		}).addTo(map);
-    
+            
+        // add an OpenStreetMap tile layer
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
     </script>
 
 </body>
