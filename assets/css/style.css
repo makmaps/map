@@ -1,11 +1,26 @@
 body {
   font-family: "Muli", sans-serif;
-  background: grey;
+}
+
+
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 10px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
 }
 
 #main {
-  width: 70%;
-  max-width: 45em;
+  max-width: 100%;
+  width: 95%;
   margin: 0 auto;
   position: relative;
   min-height: 100%;
@@ -41,7 +56,7 @@ a {
 
 #separator {
   background-color: darkgoldenrod;
-  height: 1.3em;
+  height: 0.4em;
 }
 
 .content h1 {
